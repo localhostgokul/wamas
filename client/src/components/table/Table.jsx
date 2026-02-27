@@ -4,7 +4,9 @@ import './table.css'
 
 const Table = props => {
 
-    const initDataShow = props.limit && props.bodyData ? props.bodyData.slice(0, Number(props.limit)) : props.bodyData
+    const initDataShow = props.limit && props.bodyData
+        ? props.bodyData.slice(0, Number(props.limit))
+        : (props.bodyData || [])
 
     const [dataShow, setDataShow] = useState(initDataShow)
 
@@ -19,6 +21,23 @@ const Table = props => {
     }
 
     const [currPage, setCurrPage] = useState(0)
+
+    // keep dataShow in sync when bodyData or limit changes
+    React.useEffect(() => {
+        if (!props.bodyData) {
+            setDataShow([])
+            setCurrPage(0)
+            return
+        }
+
+        if (props.limit !== undefined) {
+            const start = Number(props.limit) * currPage
+            const end = start + Number(props.limit)
+            setDataShow(props.bodyData.slice(start, end))
+        } else {
+            setDataShow(props.bodyData)
+        }
+    }, [props.bodyData, props.limit, currPage])
 
     const selectPage = page => {
         const start = Number(props.limit) * page
