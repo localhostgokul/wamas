@@ -92,7 +92,7 @@ const Admin = () => {
     <tr key={index}>
       <td className="capitalize">{item.user_nama}</td>
       <td>{item.user_email}</td>
-      <td>+62 {item.user_phonenum}</td>
+      <td>+91 {item.user_phonenum}</td>
       <td className="capitalize">{item.user_address}</td>
 
       {isAdmin && (
@@ -146,79 +146,91 @@ const Admin = () => {
                 content={
                   <form onSubmit={handleSubmit}>
                     <div className="modal-body">
-                      <input
-                        type="text"
-                        placeholder="Name"
-                        value={userFormdata.user_nama}
-                        onChange={(e) =>
-                          setUserFormdata({
-                            ...userFormdata,
-                            user_nama: e.target.value,
-                          })
-                        }
-                      />
-
-                      <input
-                        type="email"
-                        placeholder="Email"
-                        value={userFormdata.user_email}
-                        readOnly={!!userCurrId}
-                        onChange={(e) =>
-                          setUserFormdata({
-                            ...userFormdata,
-                            user_email: e.target.value,
-                          })
-                        }
-                      />
-
-                      <input
-                        type="text"
-                        placeholder="Username"
-                        value={userFormdata.user_username}
-                        onChange={(e) =>
-                          setUserFormdata({
-                            ...userFormdata,
-                            user_username: e.target.value,
-                          })
-                        }
-                      />
-
-                      <input
-                        type="number"
-                        placeholder="Phone Number"
-                        value={userFormdata.user_phonenum}
-                        onChange={(e) =>
-                          setUserFormdata({
-                            ...userFormdata,
-                            user_phonenum: e.target.value,
-                          })
-                        }
-                      />
-
-                      <input
-                        type="text"
-                        placeholder="Address"
-                        value={userFormdata.user_address}
-                        onChange={(e) =>
-                          setUserFormdata({
-                            ...userFormdata,
-                            user_address: e.target.value,
-                          })
-                        }
-                      />
-
-                      {!userCurrId && (
+                      <div className="input">
                         <input
-                          type="password"
-                          placeholder="Password"
-                          value={userFormdata.user_pwd}
+                          type="text"
+                          placeholder="Name"
+                          value={userFormdata.user_nama}
                           onChange={(e) =>
                             setUserFormdata({
                               ...userFormdata,
-                              user_pwd: e.target.value,
+                              user_nama: e.target.value,
                             })
                           }
                         />
+                      </div>
+
+                      <div className="input">
+                        <input
+                          type="email"
+                          placeholder="Email"
+                          value={userFormdata.user_email}
+                          readOnly={!!userCurrId}
+                          onChange={(e) =>
+                            setUserFormdata({
+                              ...userFormdata,
+                              user_email: e.target.value,
+                            })
+                          }
+                        />
+                      </div>
+
+                      <div className="input">
+                        <input
+                          type="text"
+                          placeholder="Username"
+                          value={userFormdata.user_username}
+                          onChange={(e) =>
+                            setUserFormdata({
+                              ...userFormdata,
+                              user_username: e.target.value,
+                            })
+                          }
+                        />
+                      </div>
+
+                      <div className="input">
+                        <input
+                          type="number"
+                          placeholder="Phone Number"
+                          value={userFormdata.user_phonenum}
+                          onChange={(e) =>
+                            setUserFormdata({
+                              ...userFormdata,
+                              user_phonenum: e.target.value,
+                            })
+                          }
+                        />
+                      </div>
+
+                      <div className="input">
+                        <input
+                          type="text"
+                          placeholder="Address"
+                          value={userFormdata.user_address}
+                          onChange={(e) =>
+                            setUserFormdata({
+                              ...userFormdata,
+                              user_address: e.target.value,
+                            })
+                          }
+                        />
+                      </div>
+
+                      {!userCurrId && (
+                        <div className="input">
+                          <input
+                            type="password"
+                            placeholder="Password"
+                            value={userFormdata.user_pwd}
+                            onChange={(e) =>
+                              setUserFormdata({
+                                ...userFormdata,
+                                user_pwd: e.target.value,
+                              })
+                            }
+                          />
+                        </div>
                       )}
                     </div>
 
