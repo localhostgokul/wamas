@@ -71,10 +71,10 @@
  */
 const db = require("../models");
 const trashdata = db.trashdatas;
-const verify = require("../routes/verifyToken");
+// const verify = require("../routes/verifyToken");
 
 
-exports.findAll = (req, res) => {
+exports.findAll = (_, res) => {
 trashdata
     .find()
     .then((result) => {
