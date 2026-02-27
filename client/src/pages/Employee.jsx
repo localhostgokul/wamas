@@ -13,7 +13,7 @@ const Employee = () => {
 
     // login
     const userLogin = JSON.parse(localStorage.getItem('profile'));
-    console.log(userLogin)
+    // console.log(userLogin)
 
     const employeeTableHead = userLogin.result.user_isAdmin === true ? ['name', 'email', 'phone', 'address', 'action'] : ['name', 'email', 'phone', 'address']
 

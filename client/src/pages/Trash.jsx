@@ -14,7 +14,7 @@ const Trash = () => {
 
     // login
     const userLogin = JSON.parse(localStorage.getItem('profile'));
-    console.log(userLogin)
+    // console.log(userLogin)
 
     const trashTableHead = [
         'name',
