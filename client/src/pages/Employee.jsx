@@ -24,7 +24,7 @@ const Employee = () => {
         <tr key={index}>
             <td className='capitalize'>{item.user_nama}</td>
             <td>{item.user_email}</td>
-            <td>+62 {item.user_phonenum}</td>
+            <td>+91 {item.user_phonenum}</td>
             <td className='capitalize'>{item.user_address}</td>
             {userLogin.result.user_isAdmin === true ?
                 <td>
@@ -38,7 +38,8 @@ const Employee = () => {
                                 user_username: item.user_username || '',
                                 user_phonenum: item.user_phonenum || '',
                                 user_address: item.user_address || '',
-                                user_pwd: ''
+                                user_pwd: '',
+                                user_isAdmin: false,
                             });
                             setShow(true);
                         }}
@@ -57,16 +58,29 @@ const Employee = () => {
     const [userCurrId, setUserCurrId] = useState(null);
 
     const [userFormdata, setUserFormdata] = useState({
-        user_nama: '', user_email: '', user_username: '', user_phonenum: ``, user_address: '', user_pwd: ''
+        user_nama: '',
+        user_email: '',
+        user_username: '',
+        user_phonenum: ``,
+        user_address: '',
+        user_pwd: '',
+        user_isAdmin: false,
     });
 
     const dispatch = useDispatch();
 
-    const newUser = () => {
+    const newUser = (e) => {
+        e.preventDefault();
+
+        const payload = {
+            ...userFormdata,
+            user_isAdmin: false,
+        };
+
         if (userCurrId) {
-            dispatch(updateUser(userCurrId, userFormdata));
+            dispatch(updateUser(userCurrId, payload));
         } else {
-            dispatch(createUser(userFormdata));
+            dispatch(createUser(payload));
         }
     }
 
@@ -81,7 +95,13 @@ const Employee = () => {
     const clearForm = () => {
         setUserCurrId(null);
         setUserFormdata({
-            user_nama: '', user_email: '', user_username: '', user_phonenum: ``, user_address: '', user_pwd: ''
+            user_nama: '',
+            user_email: '',
+            user_username: '',
+            user_phonenum: ``,
+            user_address: '',
+            user_pwd: '',
+            user_isAdmin: false,
         });
     }
 
@@ -107,7 +127,7 @@ const Employee = () => {
                                 add new
                             </button>
                             <Modal
-                                title={<h1><i className={userCurrId ? 'bx bxs-message-square-edit' : 'bx bxs-message-square-add'}></i> admin</h1>}
+                                title={<h1><i className={userCurrId ? 'bx bxs-message-square-edit' : 'bx bxs-message-square-add'}></i> employee</h1>}
                                 content={
                                     <form onSubmit={newUser}>
 
