@@ -97,19 +97,19 @@ const Admin = () => {
 
       {isAdmin && (
         <td>
-          <button
+          <a
             className="btn-edit"
             onClick={() => handleEditClick(item)}
           >
-            Edit
-          </button>
-          {" / "}
-          <button
+            <i className="bx bxs-edit"></i>
+          </a>
+          &nbsp;/&nbsp;
+          <a
             className="btn-delete"
             onClick={() => dispatch(deleteUser(item.id))}
           >
-            Delete
-          </button>
+            <i className="bx bx-cut"></i>
+          </a>
         </td>
       )}
     </tr>
