@@ -13,11 +13,11 @@ uint8_t dataPin = 4;   // GPIO4 D2 // Change if needed
 uint8_t clockPin = 5;  // GPIO5 D1 // Change if needed
 
 // float calibration_factor = -415.767517; // previous calibration factor
-float calibration_factor = -329.8262; // For 795gms
+float calibration_factor = 369.126740; // For 795gms
 // float calibration_factor = -128.800003; // For 200gms
 
 float weight;
-float maxCapacity = 5.0; // For weight level calculation // Change if needed
+float maxCapacity = 10.0; // For weight level calculation // Change if needed
 float percentage;
 bool isFull = false;
 HX711 scale;
@@ -124,15 +124,20 @@ void sendAPI(){
   http.addHeader("Content-Type", "application/json");
   
   String json;
-  json.reserve(256);
+  json.reserve(300);   // increase a little because JSON is bigger
 
   json = "{";
+
+  json += "\"tempat_sampah_maxcapacity\": " + String(maxCapacity, 2) + ",";
+
   json += "\"tempat_sampah_current\": {";
   json += "\"tempat_sampah_gpslocation\": {\"lon\": " + String(longitude, 6) + ", \"lat\": " + String(latitude, 6) + "},";
-  json += "\"tempat_sampah_currentcapacity\": " + String(weight) + ",";
-  json += "\"tempat_sampah_currentlevel\": " + String(percentage);
+  json += "\"tempat_sampah_currentcapacity\": " + String(weight, 2) + ",";
+  json += "\"tempat_sampah_currentlevel\": " + String(percentage, 2);
   json += "},";
-  json += "\"tempat_sampah_isfull\": " + String(isFull ? "true" : "false" );
+
+  json += "\"tempat_sampah_isfull\": " + String(isFull ? "true" : "false");
+
   json += "}";
 
   Serial.println("Sending JSON:");
