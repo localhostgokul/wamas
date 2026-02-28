@@ -106,7 +106,7 @@ const trashpost = new trashdata({
     tempat_sampah_isfull: false
 });
 
-    trashpost
+trashpost
     .save(trashpost)
     .then((result) => {
     res.send(result);
@@ -137,7 +137,7 @@ exports.update = (req, res) => {
 const id = req.params.id;
 
 trashdata
-    .findByIdAndUpdate(id, req.body)
+    .findByIdAndUpdate(id, { $set: req.body }, { returnDocument: 'after', upsert: true })
     .then((result) => {
     if (!result) {
         res.status(404).send({
