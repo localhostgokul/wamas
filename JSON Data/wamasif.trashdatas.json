@@ -1,0 +1,120 @@
+[{
+  "_id": "6F",
+  "createdAt": {
+    "$date": "2026-02-28T04:06:16.790Z"
+  },
+  "tempat_sampah_current": {
+    "tempat_sampah_gpslocation": {
+      "lon": 98.765434,
+      "lat": 12.345678
+    },
+    "tempat_sampah_currentcapacity": 1,
+    "tempat_sampah_currentlevel": 10
+  },
+  "tempat_sampah_isfull": false,
+  "tempat_sampah_totalcapacitythismonth": 500,
+  "updatedAt": {
+    "$date": "2026-02-28T07:57:26.163Z"
+  },
+  "tempat_sampah_maxcapacity": 10,
+  "tempat_sampah_jenis": "organic",
+  "tempat_sampah_location": "Karur Bus Stand",
+  "tempat_sampah_name": "Anggrek",
+  "tempat_sampah_region": "TamilNadu"
+},
+{
+  "_id": "7F",
+  "createdAt": {
+    "$date": "2026-02-28T08:05:08.475Z"
+  },
+  "tempat_sampah_current": {
+    "tempat_sampah_gpslocation": {
+      "lon": 98.765434,
+      "lat": 12.345678
+    },
+    "tempat_sampah_currentcapacity": 50,
+    "tempat_sampah_currentlevel": 100
+  },
+  "tempat_sampah_isfull": true,
+  "tempat_sampah_jenis": "Inorganic",
+  "tempat_sampah_location": "Salem Railway Station",
+  "tempat_sampah_maxcapacity": 50,
+  "tempat_sampah_name": "Mawar",
+  "tempat_sampah_region": "TamilNadu",
+  "tempat_sampah_totalcapacitythismonth": 1000,
+  "updatedAt": {
+    "$date": "2026-02-28T08:05:08.475Z"
+  }
+},
+{
+  "_id": "8F",
+  "createdAt": {
+    "$date": "2026-02-28T08:07:11.981Z"
+  },
+  "tempat_sampah_current": {
+    "tempat_sampah_gpslocation": {
+      "lon": 98.765434,
+      "lat": 12.345678
+    },
+    "tempat_sampah_currentcapacity": 12,
+    "tempat_sampah_currentlevel": 30
+  },
+  "tempat_sampah_isfull": false,
+  "tempat_sampah_jenis": "metal",
+  "tempat_sampah_location": "Coimbatore Market Area",
+  "tempat_sampah_maxcapacity": 40,
+  "tempat_sampah_name": "Kenanga",
+  "tempat_sampah_region": "TamilNadu",
+  "tempat_sampah_totalcapacitythismonth": 980,
+  "updatedAt": {
+    "$date": "2026-02-28T08:07:11.981Z"
+  }
+},
+{
+  "_id": "9F",
+  "createdAt": {
+    "$date": "2026-02-28T08:08:33.359Z"
+  },
+  "tempat_sampah_current": {
+    "tempat_sampah_gpslocation": {
+      "lon": 78.1198,
+      "lat": 9.9195
+    },
+    "tempat_sampah_currentcapacity": 34,
+    "tempat_sampah_currentlevel": 97
+  },
+  "tempat_sampah_isfull": false,
+  "tempat_sampah_jenis": "Melati",
+  "tempat_sampah_location": "Trichy Central Bus Stand",
+  "tempat_sampah_maxcapacity": 35,
+  "tempat_sampah_name": "organic",
+  "tempat_sampah_region": "TamilNadu",
+  "tempat_sampah_totalcapacitythismonth": 990,
+  "updatedAt": {
+    "$date": "2026-02-28T08:13:14.253Z"
+  }
+},
+{
+  "_id": "10F",
+  "createdAt": {
+    "$date": "2026-02-28T08:13:41.650Z"
+  },
+  "tempat_sampah_current": {
+    "tempat_sampah_gpslocation": {
+      "lon": 78.1198,
+      "lat": 9.9195
+    },
+    "tempat_sampah_currentcapacity": 34,
+    "tempat_sampah_currentlevel": 97
+  },
+  "tempat_sampah_isfull": false,
+  "tempat_sampah_jenis": "Melati",
+  "tempat_sampah_location": "Madurai Meenakshi Temple Area",
+  "tempat_sampah_maxcapacity": 35,
+  "tempat_sampah_name": "organic",
+  "tempat_sampah_region": "TamilNadu",
+  "tempat_sampah_totalcapacitythismonth": 990,
+  "updatedAt": {
+    "$date": "2026-02-28T08:13:41.650Z"
+  }
+}]
