@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import Table from '../components/table/Table'
 import Carousel from '../components/carousel/Carousel';
@@ -63,6 +63,25 @@ const Trash = () => {
 
 
     const trashs = useSelector((state) => state.Trash)
+
+    const [search, setSearch] = useState('')
+
+    const filteredTrashs = useMemo(() => {
+        if (!search) return trashs
+        const term = search.toLowerCase()
+        return trashs.filter((item) => {
+            const name = item.tempat_sampah_name?.toLowerCase() || ''
+            const jenis = item.tempat_sampah_jenis?.toLowerCase() || ''
+            const lokasi = item.tempat_sampah_location?.toLowerCase() || ''
+            const region = item.tempat_sampah_region?.toLowerCase() || ''
+            return (
+                name.includes(term) ||
+                jenis.includes(term) ||
+                lokasi.includes(term) ||
+                region.includes(term)
+            )
+        })
+    }, [trashs, search])
 
 
     const [show, setShow] = useState(false);
@@ -286,11 +305,16 @@ const Trash = () => {
                             <h3><Icon icon="bx:bx-trash-alt" /> trash profile</h3><sub>~ region</sub>
                         </div>
                         <div className="search">
-                            <input type="text" placeholder='search here...' />
+                            <input
+                                type="text"
+                                placeholder='search by name, type, location, or region...'
+                                value={search}
+                                onChange={(e) => setSearch(e.target.value)}
+                            />
                             <i className='bx bx-search'></i>
                         </div>
                         <div className="card__body">
-                            <Carousel data={trashs} />
+                            <Carousel data={filteredTrashs} />
                         </div>
                     </div>
                 </div>
@@ -302,7 +326,7 @@ const Trash = () => {
                                 limit='5'
                                 headData={trashTableHead}
                                 renderHead={(item, index) => renderHead(item, index)}
-                                bodyData={trashs}
+                                bodyData={filteredTrashs}
                                 renderBody={(item, index) => renderBody(item, index)}
                             />
                         </div>

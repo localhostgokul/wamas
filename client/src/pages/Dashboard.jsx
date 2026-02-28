@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import { useSelector } from 'react-redux';
@@ -31,7 +31,27 @@ const Dashboard = () => {
 
     const trash = useSelector(state => state.Trash);
 
-    const sortedTrash = trash.sort((a, b) => b.tempat_sampah_totalcapacitythismonth - a.tempat_sampah_totalcapacitythismonth);
+    const [search, setSearch] = useState('')
+
+    // const sortedTrash = trash
+    //     .slice()
+    //     .sort((a, b) => b.tempat_sampah_totalcapacitythismonth - a.tempat_sampah_totalcapacitythismonth);
+
+    const filteredTrashForProfile = useMemo(() => {
+        if (!search) return trash
+        const term = search.toLowerCase()
+        return trash.filter((item) => {
+            const text = JSON.stringify(item || {}).toLowerCase()
+            return text.includes(term)
+        })
+    }, [trash, search])
+
+    const filteredTopTrash = useMemo(() => {
+        const base = filteredTrashForProfile.length ? filteredTrashForProfile : trash
+        return base
+            .slice()
+            .sort((a, b) => b.tempat_sampah_totalcapacitythismonth - a.tempat_sampah_totalcapacitythismonth)
+    }, [filteredTrashForProfile, trash])
 
     // console.log(trash);
 
@@ -95,7 +115,7 @@ const Dashboard = () => {
                             <Table
                                 headData={topTrashs}
                                 renderHead={(item, index) => renderCusomerHead(item, index)}
-                                bodyData={sortedTrash.slice(0, 5)}
+                                bodyData={filteredTopTrash.slice(0, 5)}
                                 renderBody={(item, index) => renderCusomerBody(item, index)}
                             />
                         </div>
@@ -108,11 +128,16 @@ const Dashboard = () => {
                             <h3><Icon icon="bx:bx-trash-alt" /> trash profile</h3><sub>~ region</sub>
                         </div>
                         <div className="search">
-                            <input type="text" placeholder='search here...' />
+                            <input
+                                type="text"
+                                placeholder='search by name, type, location, or region...'
+                                value={search}
+                                onChange={(e) => setSearch(e.target.value)}
+                            />
                             <i className='bx bx-search'></i>
                         </div>
                         <div className="card__body">
-                            <Carousel data={trash} />
+                            <Carousel data={filteredTrashForProfile} />
                         </div>
                     </div>
                 </div>
