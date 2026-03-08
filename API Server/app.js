@@ -26,7 +26,7 @@ res.json({
 });
 });
 
-require("./app/routes/user.routes")(app);
+require("./app/routes/user.Routes")(app);
 require("./app/routes/trashdata.Routes")(app);
 
 const PORT = process.env.PORT || 5000;
